@@ -3,7 +3,15 @@ from pyrogram import Client
 from dotenv import load_dotenv
 import os
 import time
-from datetime import datetime
+from datetime import datetime, timezone  # Ensure 'timezone' is imported
+
+# Define your bot credentials
+API_ID = "your_api_id"
+API_HASH = "your_api_hash"
+BOT_TOKEN = "your_bot_token"
+
+# Initialize Pyrogram Client
+app = Client("my_bot", api_id=API_ID, api_hash=API_HASH, bot_token=BOT_TOKEN)
 
 # Adjust system time for Telegram API sync
 telegram_time_offset = int(time.time()) - int(datetime.now(timezone.utc).timestamp())
@@ -12,7 +20,8 @@ if abs(telegram_time_offset) > 1:
     time.sleep(abs(telegram_time_offset))
 
 # Start the bot
-app.run()
+if __name__ == "__main__":
+    app.run()
 
 # Load environment variables
 load_dotenv()
