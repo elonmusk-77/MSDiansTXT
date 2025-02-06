@@ -1,5 +1,6 @@
 
 pyrogram==2.0.0
+TgCrypto
 python-dotenv==0.21.0
 pyaes==1.6.1
 pysocks==1.7.1
