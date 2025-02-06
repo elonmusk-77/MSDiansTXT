@@ -6,10 +6,10 @@ import time
 from datetime import datetime
 
 # Adjust system time for Telegram API sync
-telegram_time_offset = int(time.time()) - int(datetime.utcnow().timestamp())
+telegram_time_offset = int(time.time()) - int(datetime.now(timezone.utc).timestamp())
 if abs(telegram_time_offset) > 1:
     print(f"Adjusting Telegram time offset: {telegram_time_offset}")
-    time.sleep(telegram_time_offset)
+    time.sleep(abs(telegram_time_offset))
 
 # Start the bot
 app.run()
