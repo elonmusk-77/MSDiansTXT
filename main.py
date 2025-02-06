@@ -2,6 +2,17 @@
 from pyrogram import Client
 from dotenv import load_dotenv
 import os
+import time
+from datetime import datetime
+
+# Adjust system time for Telegram API sync
+telegram_time_offset = int(time.time()) - int(datetime.utcnow().timestamp())
+if abs(telegram_time_offset) > 1:
+    print(f"Adjusting Telegram time offset: {telegram_time_offset}")
+    time.sleep(telegram_time_offset)
+
+# Start the bot
+app.run()
 
 # Load environment variables
 load_dotenv()
