@@ -1,1 +1,1 @@
-web: python main.py
+web: bash -c "ntpdate pool.ntp.org; python main.py"
